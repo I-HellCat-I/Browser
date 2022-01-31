@@ -1,22 +1,15 @@
 package com.NOTexample.browser;
 
 import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.WindowInsets;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,6 +17,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.mozilla.geckoview.GeckoRuntime;
+import org.mozilla.geckoview.GeckoSession;
+import org.mozilla.geckoview.GeckoView;
 
 public class MainActivity extends AppCompatActivity implements ActivityResultCallback{
     TextView textPageView;
@@ -33,9 +30,16 @@ public class MainActivity extends AppCompatActivity implements ActivityResultCal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        textPageView = findViewById(R.id.textPageView);
-        textUriInput = findViewById(R.id.textUriInput);
+        setContentView(R.layout.activity_main_bak);
+        GeckoView view = findViewById(R.id.geckoview);
+        GeckoSession session = new GeckoSession();
+        GeckoRuntime runtime = GeckoRuntime.create(this);
+
+        session.open(runtime);
+        view.setSession(session);
+        session.loadUri("about:buildconfig"); // Or any other URL...
+        //textPageView = findViewById(R.id.textPageView);
+        //textUriInput = findViewById(R.id.textUriInput);
         //ARC = new ActivityResultContracts();
 
         /*if (ContextCompat.checkSelfPermission(

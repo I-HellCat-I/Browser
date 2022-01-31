@@ -22,7 +22,7 @@ import org.mozilla.geckoview.GeckoRuntime;
 import org.mozilla.geckoview.GeckoSession;
 import org.mozilla.geckoview.GeckoView;
 
-public class MainActivity extends AppCompatActivity implements ActivityResultCallback{
+public class MainActivity extends AppCompatActivity{
     TextView textPageView;
     EditText textUriInput;
     ActivityResultContracts ARC;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements ActivityResultCal
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_bak);
+        setContentView(R.layout.activity_main);
         GeckoView view = findViewById(R.id.geckoview);
         GeckoSession session = new GeckoSession();
         GeckoRuntime runtime = GeckoRuntime.create(this);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements ActivityResultCal
             permission = registerForActivityResult()
             .RequestPermission();
         }*/
-        textUriInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        /*textUriInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 RequestQueue queue = Volley.newRequestQueue(getBaseContext());
@@ -96,6 +96,6 @@ public class MainActivity extends AppCompatActivity implements ActivityResultCal
     @Override
     public void onActivityResult(Object result) {
 
-    }
+    }*/
 
-}
+}}

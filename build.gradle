@@ -3,6 +3,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://maven.mozilla.org/maven2/"
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
@@ -11,7 +14,10 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
+ext {
+    geckoview_channel = "nightly"
+    geckoview_version = "70.0.20190712095934"
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

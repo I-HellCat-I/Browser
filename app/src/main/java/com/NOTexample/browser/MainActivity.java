@@ -36,15 +36,14 @@ public class MainActivity extends AppCompatActivity implements ActivityResultCal
         setContentView(R.layout.activity_main);
         textPageView = findViewById(R.id.textPageView);
         textUriInput = findViewById(R.id.textUriInput);
-        ActivityResultLauncher permission;
-        ARC = new ActivityResultContracts();
+        //ARC = new ActivityResultContracts();
 
-        if (ContextCompat.checkSelfPermission(
+        /*if (ContextCompat.checkSelfPermission(
                 getBaseContext(), Manifest.permission.INTERNET) ==
                 PackageManager.PERMISSION_GRANTED) {
             // You can use the API that requires the permission.
             //performAction(...);
-        } else if (shouldShowRequestPermissionRationale(...)) {
+        } else if (shouldShowRequestPermissionRationale()) {
             // In an educational UI, explain to the user why your app requires this
             // permission for a specific feature to behave as expected. In this UI,
             // include a "cancel" or "no thanks" button that allows the user to
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements ActivityResultCal
         if (getBaseContext().checkSelfPermission ("INTERNET") == PackageManager.PERMISSION_DENIED){
             permission = registerForActivityResult()
             .RequestPermission();
-        }
+        }*/
         textUriInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements ActivityResultCal
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        textView.setText("That didn't work!");
+                        textPageView.setText("That didn't work!");
                     }
 
                 });
